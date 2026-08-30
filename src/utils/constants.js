@@ -1,4 +1,4 @@
-import resume from "../assets/Akash kumar sahoo Resume.pdf";
+import resume from "../assets/Akash_Kumar_Sahoo_Resume.pdf";
 // ==============================
 // Personal Information
 // ==============================

@@ -1,7 +1,7 @@
 import scan2exit from '../assets/projectimg/scan2exit.png'
 import scan2know from '../assets/projectimg/scan2know.png'
 import akstore from '../assets/projectimg/akstore.png'
-import nexthub from '../assets/projectimg/next hub.png'
+import nexthub from '../assets/projectimg/nexthub.png'
 export const projects = [
   {
     id: 1,
