@@ -5,7 +5,9 @@ import About from './components/sections/About.jsx'
 import Education from './components/sections/Education.jsx'
 import Skills from './components/sections/Skills.jsx'
 import Projects from './components/sections/Projects.jsx'
+import Services from './components/sections/Services.jsx'
 import CertificatesHackathons from './components/sections/CertificatesHackathons.jsx'
+import Contact from './components/sections/Contact.jsx'
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
           <Education/>
           <Skills/>
           <Projects/>
+          <Services/>
           <CertificatesHackathons/>
+          <Contact/>
         </main>
       </div>
     </>
