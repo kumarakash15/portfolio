@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Code, Menu, X } from "lucide-react";
 import { navLinks, personalInfo } from "../../utils/constants.js";
 import {
@@ -10,9 +10,9 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const activeSection = useScrollSpy(
-    navLinks.map((link) => link.id)
-  );
+  // Memoize the array so it doesn't recreate on every render and cause infinite loops
+  const sectionIds = useMemo(() => navLinks.map((link) => link.id), []);
+  const activeSection = useScrollSpy(sectionIds);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +34,9 @@ function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[1000] w-full py-4 transition-all duration-300 ${
-        isScrolled
-          ? "bg-black/30 backdrop-blur-lg"
+        // Added '|| isMenuOpen' so the background appears when mobile menu is open
+        isScrolled || isMenuOpen
+          ? "bg-black/80 backdrop-blur-xl"
           : "bg-transparent"
       }`}
       style={{ transform: "translate3d(0,0,0)" }}

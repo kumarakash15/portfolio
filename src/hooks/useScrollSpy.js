@@ -35,17 +35,19 @@ export const useScrollSpy = (sectionIds, offset = 100) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [sectionIds, offset]);
+  }, [sectionIds.join(","), offset]); // <--- FIXED DEPENDENCY ARRAY
 
   return activeSection;
 };
-//smooth scroll to a section
-export const scrollToSection=(sectionId,offset=80)=>{
-    const section=document.getElementById(sectionId);
-    if(section){
-        const top=section.offsetTop-offset;
-        window.scrollTo({
-            top,behavior:'smooth'
-        });
-    }
-}
+
+// smooth scroll to a section
+export const scrollToSection = (sectionId, offset = 80) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const top = section.offsetTop - offset;
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  }
+};
