@@ -23,6 +23,7 @@ export const personalInfo = {
 export const socialLinks = [
   { name: "LinkedIn", url: "https://www.linkedin.com/in/akash150604/" },
   { name: "GitHub", url: "https://github.com/kumarakash15" },
+  { name: "LeetCode", url: "https://leetcode.com/u/kumar_akash_15/" },
   { name: "Instagram", url: "https://www.instagram.com/akash_sahoo_15/" },
   { name: "Twitter", url: "https://x.com/AkashKu74567742" },
   { name: "Facebook", url: "https://www.facebook.com/akash.kumarsahoo.15" },
