@@ -130,7 +130,7 @@ export const navLinks = [
   },
   {
     id: "contact",
-    label: "Contact",
+    label: "contact",
     href: "#contact",
   },
 ];
