@@ -8,22 +8,24 @@ import Projects from './components/sections/Projects.jsx'
 import Services from './components/sections/Services.jsx'
 import CertificatesHackathons from './components/sections/CertificatesHackathons.jsx'
 import Contact from './components/sections/Contact.jsx'
+import Footer from './components/layout/Footer.jsx'
 
 function App() {
   return (
     <>
-      <div className='min-h-screen bg-black pb-[100vh]'>
-        <Navbar/>
+      <div className='min-h-screen bg-black'>
+        <Navbar />
         <main>
-          <Hero/>
-          <About/>
-          <Education/>
-          <Skills/>
-          <Projects/>
-          <Services/>
-          <CertificatesHackathons/>
-          <Contact/>
+          <Hero />
+          <About />
+          <Education />
+          <Skills />
+          <Projects />
+          <Services />
+          <CertificatesHackathons />
+          <Contact />
         </main>
+        <Footer />
       </div>
     </>
   )
