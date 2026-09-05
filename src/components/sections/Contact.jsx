@@ -12,6 +12,7 @@ function Contact() {
     message: ''
   });
   const [status, setStatus] = useState({ type: '', message: '' });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,8 +21,10 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validation
     if (!formData.name || !formData.email || !formData.message) {
       setStatus({ type: 'error', message: 'Please fill in all fields' });
       return;
@@ -31,13 +34,46 @@ function Contact() {
       setStatus({ type: 'error', message: 'Please enter a valid email' });
       return;
     }
-    setStatus({ type: 'success', message: "Message sent successfully! I'll get back to you soon" });
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+
+    setLoading(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      // Securely get the API key from the .env file
+      // Uses Vite's method or Create React App's method
+      const accessKey = import.meta.env.VITE_ACCESS_KEY || process.env.REACT_APP_ACCESS_KEY;
+
+      // Send data to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey, 
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus({ type: 'success', message: "Message sent successfully! I'll get back to you soon" });
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+      } else {
+        setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Network error. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Using Font Awesome for social icons as it is highly stable.
-  // Added multiple case/spelling variations to match any typos in your constants.js
   const socialIcons = {
     LinkedIn: FaIcons.FaLinkedinIn,
     Linkdin: FaIcons.FaLinkedinIn,
@@ -114,13 +150,29 @@ function Contact() {
                     rows={5}
                   ></textarea>
                 </div>
+                
+                {/* Updated Button with Loading State */}
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group"
+                  disabled={loading}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span>Send message</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send message</span>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    </>
+                  )}
                 </button>
+
                 {status.message && (
                   <div
                     className={`p-4 rounded-xl ${
@@ -180,7 +232,6 @@ function Contact() {
                 <p className="text-sm text-white/60 mb-4">Connect With Me</p>
                 <div className="flex flex-wrap gap-4">
                   {socialLinks.map(({ name, url }) => {
-                    // Look up the icon. This will work even if you spelled it 'Linkdin' or 'LinkedIn' in constants.js
                     const Icon = socialIcons[name];
                     return Icon ? (
                       <a
