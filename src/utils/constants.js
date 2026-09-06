@@ -4,7 +4,7 @@ import resume from "../assets/Akash_Kumar_Sahoo_Resume.pdf";
 // ==============================
 export const personalInfo = {
   name: "Akash Kumar Sahoo",
-  title: "Full Stack Web Developer",
+  title: "Full Stack Developer",
   email: "akashsahoo31538@gmail.com",
   location: "Rajnagar, Odisha, India",
   tagline:
