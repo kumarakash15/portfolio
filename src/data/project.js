@@ -18,7 +18,7 @@ export const projects = [
       "QR Code",
       "REST API"
     ],
-    demoUrl: "https://expo.dev/accounts/eatmhostelteam/projects/scan2exit/builds/9bc86941-ca87-4c00-bb85-11cd92ec1527",
+    demoUrl: "https://expo.dev/accounts/eatmhostelteam/projects/scan2exit/builds/9f69e7d9-6567-4271-8e8c-0d1e6b8d884a",
     githubUrl: "https://github.com/eatmhostel/EGI-Gate-Pass"
   },
 
