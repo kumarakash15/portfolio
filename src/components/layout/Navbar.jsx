@@ -38,7 +38,7 @@ function Navbar() {
         isScrolled || isMenuOpen
           ? "bg-black/80 backdrop-blur-xl"
           : "bg-transparent"
-      }`}
+        }`}
       style={{ transform: "translate3d(0,0,0)" }}
     >
       <div className="max-w-[1320px] mx-auto px-5">
@@ -68,11 +68,10 @@ function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-base font-medium transition-all duration-300 ${
-                  activeSection === link.id
+                className={`text-base font-medium transition-all duration-300 ${activeSection === link.id
                     ? "text-white"
                     : "text-white/70 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.label}
               </button>
@@ -83,7 +82,21 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => handleNavClick("contact")}
-              className="px-7 py-3.5 bg-white text-[#212121] font-medium text-base rounded-[17px] border border-white hover:bg-white/90 transition-all duration-300"
+              className="
+      px-7 py-3.5
+      bg-white text-[#212121]
+      font-medium text-base
+      rounded-[17px]
+      border border-white
+      shadow-sm
+      hover:bg-[#212121]
+      hover:text-white
+      hover:border-[#212121]
+      hover:scale-105
+      hover:-translate-y-1
+      hover:shadow-lg
+      transition-all duration-300 ease-in-out
+    "
             >
               Hire Me
             </button>
@@ -106,11 +119,10 @@ function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-left text-base font-medium ${
-                  activeSection === link.id
+                className={`text-left text-base font-medium ${activeSection === link.id
                     ? "text-white"
                     : "text-white/70"
-                }`}
+                  }`}
               >
                 {link.label}
               </button>
