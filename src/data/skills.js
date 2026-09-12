@@ -164,24 +164,38 @@ const skills = [
     level: "Beginner",
     experience: "6+ Months",
   },
+  {
+    id: 23,
+    name: "Vercel",
+    icon: "fa-solid fa-caret-up",
+    level: "Intermediate",
+    experience: "1+ Year",
+  },
+  {
+    id: 24,
+    name: "Render",
+    icon: "fa-solid fa-cloud",
+    level: "Intermediate",
+    experience: "1+ Year",
+  },
 
   // Testing
   {
-    id: 23,
+    id: 25,
     name: "Manual Testing",
     icon: "fa-solid fa-vial",
     level: "Intermediate",
     experience: "1+ Year",
   },
   {
-    id: 24,
+    id: 26,
     name: "Automation Testing",
     icon: "fa-solid fa-robot",
     level: "Intermediate",
     experience: "1+ Year",
   },
   {
-    id: 25,
+    id: 27,
     name: "Selenium WebDriver",
     icon: "fa-solid fa-flask",
     level: "Intermediate",

@@ -43,6 +43,8 @@ function Skills() {
         "Cloud & DevOps": [
             skills.find((s) => s.name === "AWS"),
             skills.find((s) => s.name === "CI/CD"),
+            skills.find((s) => s.name === "Vercel"),
+            skills.find((s) => s.name === "Render"),
         ].filter(Boolean),
 
         "Testing": [
@@ -93,7 +95,7 @@ function Skills() {
                                     {skillList.map((skill) => {
                                         if (!skill) return null;
                                         const proficiency = getProficiencyLevel(skill.level);
-                                        
+
                                         return (
                                             <div key={skill.id}>
                                                 <div className="flex justify-between items-center mb-2">
@@ -105,7 +107,7 @@ function Skills() {
                                                         {skill.level}
                                                     </span>
                                                 </div>
-                                                
+
                                                 {/* Progress Bar */}
                                                 <div className="w-full bg-white/10 rounded-full h-1.5 mb-2">
                                                     <div
@@ -113,7 +115,7 @@ function Skills() {
                                                         style={{ width: `${proficiency}%` }}
                                                     ></div>
                                                 </div>
-                                                
+
                                                 <p className="text-xs text-white/50">{skill.experience}</p>
                                             </div>
                                         );
